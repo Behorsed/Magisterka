@@ -1,13 +1,134 @@
 body {
+  background: #f1f1f1;
+  font-family: Cambria;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+#title {
+  text-align: center;
+  font-weight: bold;
+  padding: 20px 30px;
+  margin: 0;
+  height: 500vh;
 }
+
+#title h1 {
+  color: #d25d5d;
+  letter-spacing: 5px;
+  font-weight: bold;
+  font-size: 6em;
+}
+
+#title p {
+  font-size: 3em;
+  font-weight: bold;
+  color: #ef6363;
+}
+
+main {
+  text-align: center;
+}
+
+.btn {
+  background: transparent;
+  font-size: 1em;
+  padding: 10px 5px;
+  margin-top: 50px;
+  font-weight: 100;
+  width: 150px;
+  letter-spacing: 3px;
+  border: 1px solid #d25d5d;
+  color: #ef6363;
+  cursor: pointer;
+}
+
+#btn-start:hover {
+  background: #d25d5d;
+  color: #fff;
+}
+
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+  background: #f1f1f1;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+#test-div {
+  width: 650px;
+  height: 100vh;
+  margin: 200px auto 100px auto;
+  display: block;
+  background: #f1f1f1;
+}
+
+#reset {
+  font-size: 2em;
+  position: absolute;
+  bottom: 150px;
+  right: 3em;
+  width: 200px;
+  padding: 5px 8px;
+  border: 1px solid #d25d5d;
+  text-decoration: none;
+  color: #d25d5d;
+}
+#reset:hover {
+  background: #d23425;
+  color: #fff;
+}
+
+#menu {
+  font-size: 2em;
+  position: absolute;
+  bottom: 50px;
+  right: 3em;
+  width: 200px;
+  padding: 5px 8px;
+  border: 1px solid #d25d5d;
+  text-decoration: none;
+  color: #d25d5d;
+}
+#menu:hover {
+  background: #d23425;
+  color: #fff;
+}
+
+#stats {
+  width: 50%;
+  margin: 10px auto;
+  font-size: 2em;
+}
+
+#score {
+  font-size: 2em;
+  color: #d25d5d;
+  height: 5px;
+}
+#stat {
+  font-size: 2em;
+  color: #d25d5d;
+  height: 5px;
+}
+
+
+#reaction-time {
+  width: 100%;
+  color: #d25d5d;
+}
+
+
+#the-circle {
+  position: center;
+  vertical-align:center;
+  cursor: pointer;
+}
+
+
+
+
