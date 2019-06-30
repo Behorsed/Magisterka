@@ -6,7 +6,7 @@ class App extends Component {
         super(props);
         this.state = {
             startPage: true,
-            source: 'http://r.ddmcdn.com/s_f/o_1/cx_462/cy_245/cw_1349/ch_1349/w_720/APL/uploads/2015/06/caturday-shutterstock_149320799.jpg',
+            source: "/circle.gif",
         };
     }
     handleClick() {
@@ -57,7 +57,7 @@ class Buttons extends Component {
 class Circle extends Component {
     render() {
         return (
-            <img src={this.props.source} onClick={() => this.props.onCircleClick()}/>
+            <img alt = '' src={this.props.source} onClick={() => this.props.onCircleClick()}/>
         )
     }
 }
