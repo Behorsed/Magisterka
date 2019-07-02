@@ -2,12 +2,25 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 class App extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
             startPage: true,
             source: "/circle.gif",
         };
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.source === "/circle.gif" && this.state.source === '') { // if the circle disappeared
+            let time = Math.random()*3000;
+            setTimeout(
+                function() {
+                    this.setState({source: "/circle.gif"});
+                }
+                    .bind(this),
+                time
+            );
+        }
     }
     handleClick() {
         const startPage = this.state.startPage;
@@ -55,6 +68,7 @@ class Buttons extends Component {
     }
 }
 class Circle extends Component {
+
     render() {
         return (
             <img alt = '' src={this.props.source} onClick={() => this.props.onCircleClick()}/>
