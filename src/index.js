@@ -60,6 +60,23 @@ class Circle extends Component {
         )
     }
 }
+class Stats extends Component { // reusable component to
+    render() {
+        const timeList = this.props.timeList;
+        if (timeList.length == 0) {
+            return (null);
+        }
+        let sum = 0;
+        for( let i = 0; i < timeList.length; i++ ) {
+            sum += timeList[i];
+        }
+        const avg = Math.round(sum/timeList.length);
+
+        return (
+            <p> Average: {avg} ms</p>
+        )
+    }
+}
 class Test extends Component {
     constructor(props) {
         super(props);
@@ -75,6 +92,7 @@ class Test extends Component {
         })
 
     }
+
     componentDidUpdate(prevProps, prevState) {
         if (prevState.source === "/circle.gif" && this.state.source === '') { // if the circle disappeared
             let timeClicked = Date.now();
@@ -82,7 +100,7 @@ class Test extends Component {
             setTimeout(
                 function() {
                     this.setState({source: "/circle.gif", timeAppeared: Date.now()});
-                    // letTime// make it reappear after a random time
+                    //  make it reappear after a random time
                 }
                     .bind(this),
                 time
@@ -92,10 +110,13 @@ class Test extends Component {
     }
     render() {
         const source = this.state.source;
+        const timeList = this.state.timeListSimple;
         return (
             <div>
                 <Buttons onMenuClick={() => this.props.onMenuClick()}/>
                 <Circle onCircleClick={() => this.handleCircle()} source = {source}/>
+                <Table timeList = { timeList } />
+                <Stats timeList = { timeList } />
             </div>
         );
     }

@@ -24,7 +24,10 @@ body {
   font-weight: bold;
   color: #ef6363;
 }
-
+p {
+  font-size: 1em;
+  font-weight: bold;
+}
 main {
   text-align: center;
 }
