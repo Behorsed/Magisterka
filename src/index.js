@@ -18,6 +18,7 @@ class App extends Component {
             startPage: true,
         });
     }
+
     handleStartClick() {
         this.setState({
             startPage: false,
@@ -51,7 +52,10 @@ class Title extends Component {
 class Buttons extends Component {
     render() {
         return (
+            <div>
             <button className="btn" onClick={() => this.props.onMenuClick()}>Menu</button>
+            <button className="btn" onClick={() => this.props.onResetClick()}>Reset</button>
+            </div>
         )
     }
 }
@@ -69,9 +73,17 @@ class Test extends Component {
         super(props);
         this.state = {
             timeListSimple: [],
-            timeAppeared: Date.now(),
-            source: '/circle.gif'
+            timeAppeared: null,
+            source: '',
         };
+        setTimeout(
+            function() {
+                this.setState({source: "/circle.gif", timeAppeared: Date.now()});
+                //  make it reappear after a random time
+            }
+                .bind(this),
+            3000 // additional time at the beginning
+        );
     }
     handleCircle() {
         this.setState({
@@ -79,11 +91,22 @@ class Test extends Component {
         })
 
     }
-
+    handleResetClick() {
+        this.setState({
+            timeListSimple: [],
+            timeAppeared: Date.now(),
+            source: '',
+        });
+    }
     componentDidUpdate(prevProps, prevState) {
         if (prevState.source === "/circle.gif" && this.state.source === '') { // if the circle disappeared
             let timeClicked = Date.now();
             let time = Math.random()*3000;
+            if (this.state.timeListSimple.length >= prevState.timeListSimple.length) // if list was not reset
+            {
+                this.setState({ timeListSimple: [...this.state.timeListSimple, timeClicked - prevState.timeAppeared] });
+
+            };
             setTimeout(
                 function() {
                     this.setState({source: "/circle.gif", timeAppeared: Date.now()});
@@ -92,7 +115,7 @@ class Test extends Component {
                     .bind(this),
                 time
             );
-            this.setState({ timeListSimple: [...this.state.timeListSimple, timeClicked - prevState.timeAppeared] });
+
         }
     }
     render() {
@@ -100,7 +123,7 @@ class Test extends Component {
         const timeList = this.state.timeListSimple;
         return (
             <div>
-                <Buttons onMenuClick={() => this.props.onMenuClick()}/>
+                <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
                 <Circle onCircleClick={() => this.handleCircle()} source = {source}/>
                 <Stats timeList = { timeList } />
                 <BarChart
