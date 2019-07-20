@@ -102,12 +102,11 @@ class Test extends Component {
             <div>
                 <Buttons onMenuClick={() => this.props.onMenuClick()}/>
                 <Circle onCircleClick={() => this.handleCircle()} source = {source}/>
-                <Table timeList = { timeList } />
                 <Stats timeList = { timeList } />
                 <BarChart
                     data={timeList}
                     title="Reaction Time History"
-                    color="#70CAD1"
+                    color="#d25d5d"
                 />
             </div>
         );
