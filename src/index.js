@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Table from './Table.js'
+// import Table from './Table.js'
 import Stats from './Stats.js'
 import BarChart from './BarChart.js'
+import PieChart from './PieChart.js'
 
 class App extends Component {
 
@@ -121,16 +122,41 @@ class Test extends Component {
     render() {
         const source = this.state.source;
         const timeList = this.state.timeListSimple;
+        const pieData = [
+            {
+                "label": "< Average - Standard Deviation",
+        "value": 1
+    },
+        {
+            "label": "> Average - Standard Deviation and < Average + Standard Deviation",
+            "value": 2
+        },
+            {
+                "label": "> Average + Standard Deviation",
+                "value": 3
+            }
+    ]
         return (
             <div>
                 <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
                 <Circle onCircleClick={() => this.handleCircle()} source = {source}/>
                 <Stats timeList = { timeList } />
+                <div className = "row">
+                    <div>
                 <BarChart
-                    data={timeList}
-                    title="Reaction Time History"
-                    color="#d25d5d"
+        data={timeList}
+        title="Reaction Time History"
+        color="#d25d5d"
+            />
+                    </div>
+                    <div>
+                <PieChart
+                    data={pieData}
+                    title="Number of tries in relation to average"
+                    colors = {['#eeac99', '#e06377', '#c83349']}
                 />
+                    </div>
+            </div>
             </div>
         );
     }

@@ -131,7 +131,12 @@ main {
   vertical-align:center;
   cursor: pointer;
 }
-
-
-
-
+.row {
+  width:100%;
+  display:inline-block;
+}
+.row div {
+  width:50%;
+  height:100%;
+  float:left;
+}
