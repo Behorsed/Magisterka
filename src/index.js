@@ -76,6 +76,8 @@ class Test extends Component {
             timeListSimple: [],
             timeAppeared: null,
             source: '',
+            avg: null,
+            stdDev: null
         };
         setTimeout(
             function() {
@@ -119,9 +121,25 @@ class Test extends Component {
 
         }
     }
+
+    average(data){
+        const sum = data.reduce(function(sum, value){
+            return sum + value;
+        }, 0);
+
+        const avg = sum / data.length;
+        return avg;
+    }
     render() {
         const source = this.state.source;
         const timeList = this.state.timeListSimple;
+        const avg = Math.round(this.average(timeList));
+        let stdDevElements = timeList.map(function(value){
+            let diff = value - avg; //(x-x_mean)
+            return diff * diff; // (x-x_mean)^2
+        });
+        const avgElements = this.average(stdDevElements); ////  (x-x_mean)^2 / N
+        const stdDev = Math.round(Math.sqrt(avgElements));
         const pieData = [
             {
                 "label": "< Average - Standard Deviation",
@@ -140,7 +158,7 @@ class Test extends Component {
             <div>
                 <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
                 <Circle onCircleClick={() => this.handleCircle()} source = {source}/>
-                <Stats timeList = { timeList } />
+                <Stats stdDev = { stdDev } avg = { avg } timeListLength = { timeList.length } />
                 <div className = "row">
                     <div>
                 <BarChart
