@@ -64,7 +64,7 @@ class Circle extends Component {
 
     render() {
         return (
-            <img alt = '' src={this.props.source} onClick={() => this.props.onCircleClick()}/>
+            <img className="the-circle" alt = '' src={this.props.source} onClick={() => this.props.onCircleClick()}/>
         )
     }
 }
@@ -79,7 +79,7 @@ class Test extends Component {
         };
         setTimeout(
             function() {
-                this.setState({source: "/circle.gif", timeAppeared: Date.now()});
+                this.setState({source: "/circle.jpg", timeAppeared: Date.now()});
                 //  make it reappear after a random time
             }
                 .bind(this),
@@ -100,7 +100,7 @@ class Test extends Component {
         });
     }
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.source === "/circle.gif" && this.state.source === '') { // if the circle disappeared
+        if (prevState.source === "/circle.jpg" && this.state.source === '') { // if the circle disappeared
             let timeClicked = Date.now();
             let time = Math.random()*3000;
             if (this.state.timeListSimple.length >= prevState.timeListSimple.length) // if list was not reset
@@ -110,7 +110,7 @@ class Test extends Component {
             };
             setTimeout(
                 function() {
-                    this.setState({source: "/circle.gif", timeAppeared: Date.now()});
+                    this.setState({source: "/circle.jpg", timeAppeared: Date.now()});
                     //  make it reappear after a random time
                 }
                     .bind(this),

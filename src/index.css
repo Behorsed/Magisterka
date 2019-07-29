@@ -126,10 +126,11 @@ main {
 }
 
 
-#the-circle {
-  position: center;
-  vertical-align:center;
-  cursor: pointer;
+.the-circle {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 5%;
 }
 .row {
   width:100%;
