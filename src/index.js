@@ -77,7 +77,8 @@ class Test extends Component {
             timeAppeared: null,
             source: '',
             avg: null,
-            stdDev: null
+            stdDev: null,
+            resetClicked: false
         };
         setTimeout(
             function() {
@@ -97,12 +98,13 @@ class Test extends Component {
     handleResetClick() {
         this.setState({
             timeListSimple: [],
-            timeAppeared: Date.now(),
             source: '',
+            resetClicked: true,
         });
     }
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.source === "/circle.jpg" && this.state.source === '') { // if the circle disappeared
+        if ((prevState.source === "/circle.jpg" && this.state.source ===
+            '' )) { // if the circle disappeared
             let timeClicked = Date.now();
             let time = Math.random()*3000;
             if (this.state.timeListSimple.length >= prevState.timeListSimple.length) // if list was not reset
@@ -140,25 +142,37 @@ class Test extends Component {
         });
         const avgElements = this.average(stdDevElements); ////  (x-x_mean)^2 / N
         const stdDev = Math.round(Math.sqrt(avgElements));
+        const timeListLength = timeList.length
+        let low = 0; // tries lower than avg - stdDev
+        let medium = 0; // tries between avg - stdDev and avg + stdDev
+        let high = 0; // tries higher than avg + stdDev
+        for(let i = 0; i < timeListLength; ++i){
+            if(timeList[i] < avg - stdDev)
+            {low++;}
+            else if(timeList[i] >= avg - stdDev && timeList[i] <= avg + stdDev)
+            {medium++;}
+            else if (timeList[i] > avg + stdDev)
+            {high++;}
+        }
         const pieData = [
             {
                 "label": "< Average - Standard Deviation",
-        "value": 1
+        "value": low
     },
         {
             "label": "> Average - Standard Deviation and < Average + Standard Deviation",
-            "value": 2
+            "value": medium
         },
             {
                 "label": "> Average + Standard Deviation",
-                "value": 3
+                "value": high
             }
     ]
         return (
             <div>
                 <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
                 <Circle onCircleClick={() => this.handleCircle()} source = {source}/>
-                <Stats stdDev = { stdDev } avg = { avg } timeListLength = { timeList.length } />
+                <Stats stdDev = { stdDev } avg = { avg } timeListLength = { timeListLength } />
                 <div className = "row">
                     <div>
                 <BarChart
