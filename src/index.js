@@ -103,10 +103,11 @@ class Test extends Component {
         });
     }
     componentDidUpdate(prevProps, prevState) {
-        if ((prevState.source === "/circle.jpg" && this.state.source ===
-            '' )) { // if the circle disappeared
+        let time;
+        if (prevState.source === "/circle.jpg" && this.state.source ===
+            '' && this.state.resetClicked === false) { // if the circle disappeared
             let timeClicked = Date.now();
-            let time = Math.random()*3000;
+            time = Math.random()*3000;
             if (this.state.timeListSimple.length >= prevState.timeListSimple.length) // if list was not reset
             {
                 this.setState({ timeListSimple: [...this.state.timeListSimple, timeClicked - prevState.timeAppeared] });
@@ -121,6 +122,18 @@ class Test extends Component {
                 time
             );
 
+        }
+        else if (this.state.resetClicked === true) {
+            time = 5000;
+            setTimeout(
+                function() {
+
+                    this.setState({source: "/circle.jpg", timeAppeared: Date.now(), resetClicked: false});
+                    //  make it reappear after a random time
+                }
+                    .bind(this),
+                time
+            )
         }
     }
 
