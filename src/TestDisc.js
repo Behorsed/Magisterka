@@ -21,6 +21,14 @@ class Circle extends Component {
         )
     }
 }
+class BlueClicked extends Component {
+
+    render() {
+        return (
+            this.props.blueClicked ? <p> WRONG!</p> :  <p> </p>
+        )
+    }
+}
 
 class TestDisc extends Component {
     constructor(props) {
@@ -31,7 +39,8 @@ class TestDisc extends Component {
             source: '',
             avg: null,
             stdDev: null,
-            resetClicked: false
+            resetClicked: false,
+            blueClicked: false,
         };
         setTimeout(
             function() {
@@ -42,10 +51,24 @@ class TestDisc extends Component {
             3000 // additional time at the beginning
         );
     }
-    handleCircle() {
-        this.setState({
-            source: '',
-        })
+    handleCircle(source) {
+        if (source === "/circle.jpg") {
+            this.setState({
+                source: '',
+            })
+        } else if (source === "/circleblue.jpg") {
+            this.setState({
+                source: '', blueClicked: true,
+            })
+            setTimeout(
+                function () {
+                    this.setState({blueClicked: false, source: "/circle.jpg"});
+
+                }
+                    .bind(this),
+                3000
+            )
+        }
 
     }
     handleResetClick() {
@@ -57,37 +80,53 @@ class TestDisc extends Component {
     }
     componentDidUpdate(prevProps, prevState) {
         let time;
-        if (this.state.resetClicked === true) {
+        if (this.state.resetClicked === true) { //additional time after reset
             setTimeout(
-                function() {
-                    this.setState({resetClicked: false, source: "/circle.jpg"});
-                    //  make it reappear after a random time
+                function () {
+                    this.setState({resetClicked: false, source: Math.random() > 0.5 ? "/circle.jpg" : "/circleblue.jpg",});
+
 
                 }
                     .bind(this),
                 3000
             )
-        }
-        else if ((prevState.source === "/circle.jpg" && this.state.source ===
+        } else if ((prevState.source === "/circle.jpg" && this.state.source ===
             '')) { // if the circle disappeared
             let timeClicked = Date.now();
-            time = Math.random()*3000;
+            time = Math.random() * 3000;
 
-                this.setState({ timeListSimple: [...this.state.timeListSimple, timeClicked - prevState.timeAppeared] });
+            this.setState({timeListSimple: [...this.state.timeListSimple, timeClicked - prevState.timeAppeared]});
 
             setTimeout(
-                function() {
-                    this.setState({source: "/circle.jpg", timeAppeared: Date.now()});
+                function () {
+                    this.setState({
+                        source: Math.random() > 0.5 ? "/circle.jpg" : "/circleblue.jpg",
+                        timeAppeared: Date.now()
+                    }); // randomly display blue or pink circle
                     //  make it reappear after a random time
                 }
                     .bind(this),
                 time
             );
 
+        } else if ((prevState.source === "/circleblue.jpg" && this.state.source ===
+            '')) { // if the blue circle disappeared
+            // wrong!
+            setTimeout(
+                function () {
+                    this.setState({
+                        source: Math.random() > 0.5 ? "/circle.jpg" : "/circleblue.jpg",
+                        timeAppeared: Date.now()
+                    });
+                    //  make it reappear after a random time
+                }
+                    .bind(this),
+                3000
+            );
+
         }
 
     }
-
     average(data){
         const sum = data.reduce(function(sum, value){
             return sum + value;
@@ -99,6 +138,7 @@ class TestDisc extends Component {
     render() {
         const source = this.state.source;
         const timeList = this.state.timeListSimple;
+        const blueClicked = this.state.blueClicked;
         const avg = Math.round(this.average(timeList));
         let stdDevElements = timeList.map(function(value){
             let diff = value - avg; //(x-x_mean)
@@ -134,9 +174,16 @@ class TestDisc extends Component {
         ]
         return (
             <div>
+
                 <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
-                <p> This is discrimination test. </p>
-                <Circle onCircleClick={() => this.handleCircle()} source = {source}/>
+                <div className = "row">
+                    < div>
+                        <Circle onCircleClick={() => this.handleCircle(this.state.source)} source = {source}/>
+                    </div>
+                    <div>
+                        <BlueClicked blueClicked = {blueClicked}/>
+                    </div>
+                </div>
                 <Stats stdDev = { stdDev } avg = { avg } timeListLength = { timeListLength } />
                 <div className = "row">
                     <div>
