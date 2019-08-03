@@ -10,13 +10,35 @@ body {
 
 #simple {
   color: #ef6363;
-  border: #ef6363;
 }
 
+.btnsimple {
+  color: #ef6363;
+  border: 1px solid #ef6363;
+  background: transparent;
+  font-size: 1em;
+  padding: 10px 5px;
+  margin-top: 25px;
+  font-weight: 100;
+  width: 150px;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
 #disc {
   color: #48aaf3
 }
-
+.btndisc {
+  color: #48aaf3;
+  background: transparent;
+  font-size: 1em;
+  padding: 10px 5px;
+  margin-top: 25px;
+  font-weight: 100;
+  width: 150px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  border: 1px solid #48aaf3
+}
 .btn {
   background: transparent;
   font-size: 1em;
@@ -25,9 +47,10 @@ body {
   font-weight: 100;
   width: 150px;
   letter-spacing: 3px;
-  border: 1px solid;
   cursor: pointer;
+  border: 1px solid
 }
+
 
 #btn-start:hover {
   background: #d25d5d;

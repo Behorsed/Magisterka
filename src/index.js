@@ -42,17 +42,17 @@ class Title extends Component {
         return (
             <div id="title">
                 <div id = "simple">
-                <h1>Simple reaction</h1>
+                <h1>Simple reaction time (SRT) test </h1>
                 <p>Rules: click on the circle as soon as it
                     appears on the screen. The application will measure the time you needed to react.</p>
-                <button className="btn" onClick={() => this.props.onStartClick()}>Start</button>
+                <button className="btnsimple" onClick={() => this.props.onStartClick()}>SRT test</button>
                 </div>
                 <div id = "disc">
-                    <h1>Discrimination reaction</h1>
+                    <h1>Discrimination reaction time (DRT) test</h1>
                     <p>Rules: click on the pink circle as soon as it
                         appears on the screen. The application will measure the time you needed to react.
                         Ignore the blue circle! </p>
-                    <button className="btn" onClick={() => this.props.onStartClick()}>Start</button>
+                    <button className="btndisc" onClick={() => this.props.onStartClick()}>DRT test</button>
                 </div>
             </div>
         );
