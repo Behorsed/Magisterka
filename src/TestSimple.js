@@ -22,7 +22,7 @@ class Circle extends Component {
     }
 }
 
-class Test extends Component {
+class TestSimple extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -157,4 +157,4 @@ class Test extends Component {
         );
     }
 }
-export default Test
+export default TestSimple
