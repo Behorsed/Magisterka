@@ -41,10 +41,19 @@ class Title extends Component {
     render() {
         return (
             <div id="title">
-                <h1>Reaction</h1>
+                <div id = "simple">
+                <h1>Simple reaction</h1>
                 <p>Rules: click on the circle as soon as it
                     appears on the screen. The application will measure the time you needed to react.</p>
                 <button className="btn" onClick={() => this.props.onStartClick()}>Start</button>
+                </div>
+                <div id = "disc">
+                    <h1>Discrimination reaction</h1>
+                    <p>Rules: click on the pink circle as soon as it
+                        appears on the screen. The application will measure the time you needed to react.
+                        Ignore the blue circle! </p>
+                    <button className="btn" onClick={() => this.props.onStartClick()}>Start</button>
+                </div>
             </div>
         );
     }
@@ -52,7 +61,3 @@ class Title extends Component {
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA

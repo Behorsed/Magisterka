@@ -1,73 +1,37 @@
 body {
   background: #f1f1f1;
-  font-family: Cambria;
-  margin: 0;
+  font-family: Cambria, serif;
 }
 
 #title {
   text-align: center;
   font-weight: bold;
-  padding: 20px 30px;
-  margin: 0;
-  height: 500vh;
 }
 
-#title h1 {
-  color: #d25d5d;
-  letter-spacing: 5px;
-  font-weight: bold;
-  font-size: 6em;
-}
-
-#title p {
-  font-size: 3em;
-  font-weight: bold;
+#simple {
   color: #ef6363;
+  border: #ef6363;
 }
-p {
-  font-size: 1em;
-  font-weight: bold;
-}
-main {
-  text-align: center;
+
+#disc {
+  color: #48aaf3
 }
 
 .btn {
   background: transparent;
   font-size: 1em;
   padding: 10px 5px;
-  margin-top: 50px;
+  margin-top: 25px;
   font-weight: 100;
   width: 150px;
   letter-spacing: 3px;
-  border: 1px solid #d25d5d;
-  color: #ef6363;
+  border: 1px solid;
   cursor: pointer;
 }
 
 #btn-start:hover {
   background: #d25d5d;
   color: #fff;
-}
-
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: block;
-  background: #f1f1f1;
-  height: 100vh;
-  margin: 0 auto;
-}
-
-#test-div {
-  width: 650px;
-  height: 100vh;
-  margin: 200px auto 100px auto;
-  display: block;
-  background: #f1f1f1;
 }
 
 #reset {
@@ -102,29 +66,10 @@ main {
   color: #fff;
 }
 
-#stats {
-  width: 50%;
-  margin: 10px auto;
-  font-size: 2em;
-}
-
-#score {
-  font-size: 2em;
-  color: #d25d5d;
-  height: 5px;
-}
-#stat {
-  font-size: 2em;
-  color: #d25d5d;
-  height: 5px;
-}
-
-
 #reaction-time {
   width: 100%;
   color: #d25d5d;
 }
-
 
 .the-circle {
   display: block;

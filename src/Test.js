@@ -57,7 +57,7 @@ class Test extends Component {
     }
     componentDidUpdate(prevProps, prevState) {
         let time;
-        if (this.state.resetClicked == true) {
+        if (this.state.resetClicked === true) {
             setTimeout(
                 function() {
                     this.setState({resetClicked: false, source: "/circle.jpg"});
