@@ -48,7 +48,7 @@ class TestDisc extends Component {
                 //  make it reappear after a random time
             }
                 .bind(this),
-            3000 // additional time at the beginning
+            2000 // additional time at the beginning
         );
     }
     handleCircle(source) {
@@ -66,7 +66,7 @@ class TestDisc extends Component {
 
                 }
                     .bind(this),
-                3000
+                2000
             )
         }
 
@@ -88,12 +88,12 @@ class TestDisc extends Component {
 
                 }
                     .bind(this),
-                3000
+                2000
             )
-        } else if ((prevState.source === "/circle.jpg" && this.state.source ===
-            '')) { // if the circle disappeared
+        } else if (prevState.source === "/circle.jpg" && this.state.source ===
+            '') { // if the circle disappeared
             let timeClicked = Date.now();
-            time = Math.random() * 3000;
+            time = Math.random() * 2000;
 
             this.setState({timeListSimple: [...this.state.timeListSimple, timeClicked - prevState.timeAppeared]});
 
@@ -109,8 +109,8 @@ class TestDisc extends Component {
                 time
             );
 
-        } else if ((prevState.source === "/circleblue.jpg" && this.state.source ===
-            '')) { // if the blue circle disappeared
+        } else if (prevState.source === "/circleblue.jpg" && this.state.source ===
+            '') { // if the blue circle disappeared
             // wrong!
             setTimeout(
                 function () {
@@ -121,7 +121,22 @@ class TestDisc extends Component {
                     //  make it reappear after a random time
                 }
                     .bind(this),
-                3000
+                2000
+            );
+
+        }
+        else if (this.state.source ===
+            "/circleblue.jpg") { // if the blue circle stays
+
+            setTimeout(
+                function () {
+                    this.setState({
+                        source: '',
+                    });
+                    //  make it reappear after a random time
+                }
+                    .bind(this),
+                2000
             );
 
         }
@@ -177,7 +192,7 @@ class TestDisc extends Component {
 
                 <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
                 <div className = "row">
-                    < div>
+                    <div className = "fixed">
                         <Circle onCircleClick={() => this.handleCircle(this.state.source)} source = {source}/>
                     </div>
                     <div>
@@ -190,14 +205,14 @@ class TestDisc extends Component {
                         <BarChart
                             data={timeList}
                             title="Reaction Time History"
-                            color="#d25d5d"
+                            color="#48aaf3"
                         />
                     </div>
                     <div>
                         <PieChart
                             data={pieData}
                             title="Number of tries in relation to average"
-                            colors = {['#eeac99', '#e06377', '#c83349']}
+                            colors = {['#b4e7ff', '#78acd7', '#48aaf3']}
                         />
                     </div>
                 </div>

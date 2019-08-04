@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Stats from "./Stats";
 import BarChart from "./BarChart";
 import PieChart from "./PieChart";
-
+const speed = 2000;
 class Buttons extends Component {
     render() {
         return (
@@ -39,7 +39,7 @@ class TestSimple extends Component {
                 //  make it reappear after a random time
             }
                 .bind(this),
-            3000 // additional time at the beginning
+            speed // additional time at the beginning
         );
     }
     handleCircle() {
@@ -65,13 +65,13 @@ class TestSimple extends Component {
 
                 }
                     .bind(this),
-                3000
+                speed
             )
         }
         else if ((prevState.source === "/circle.jpg" && this.state.source ===
             '')) { // if the circle disappeared
             let timeClicked = Date.now();
-            time = Math.random()*3000;
+            time = Math.random()*speed;
 
                 this.setState({ timeListSimple: [...this.state.timeListSimple, timeClicked - prevState.timeAppeared] });
 

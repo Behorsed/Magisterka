@@ -108,3 +108,6 @@ body {
   width:50%;
   float:left;
 }
+.fixed {
+  height: 80px;
+}
