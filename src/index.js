@@ -51,7 +51,7 @@ class Title extends Component {
     render() {
         return (
             <div id="title">
-                <div id = "simple">
+                <div className = "simple">
                 <h1>Simple reaction time (SRT) test </h1>
                 <p>Rules: click on the circle as soon as it
                     appears on the screen. The application will measure the time you needed to react.</p>

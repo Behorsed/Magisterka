@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Stats from "./Stats";
 import BarChart from "./BarChart";
 import PieChart from "./PieChart";
+import Circle from "./Circle";
 const speed = 2000;
 class Buttons extends Component {
     render() {
@@ -13,14 +14,7 @@ class Buttons extends Component {
         )
     }
 }
-class Circle extends Component {
 
-    render() {
-        return (
-            <img className="the-circle" alt = '' src={this.props.source} onClick={() => this.props.onCircleClick()}/>
-        )
-    }
-}
 
 class TestSimple extends Component {
     constructor(props) {
@@ -135,8 +129,11 @@ class TestSimple extends Component {
         return (
             <div>
                 <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
-                <Circle onCircleClick={() => this.handleCircle()} source = {source}/>
-                <Stats stdDev = { stdDev } avg = { avg } timeListLength = { timeListLength } />
+                <div className = "fixed">
+                    <Circle onCircleClick={() => this.handleCircle(this.state.source)} source = {source}/>
+                    <Stats className = "simple" stdDev = { stdDev } avg = { avg } timeListLength = { timeListLength } />
+                </div>
+
                 <div className = "row">
                     <div>
                         <BarChart

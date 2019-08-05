@@ -8,8 +8,9 @@ body {
   font-weight: bold;
 }
 
-#simple {
+.simple {
   color: #ef6363;
+  font-weight: bold;
 }
 
 .btnsimple {
@@ -98,16 +99,28 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 10%;
+  width: 50px;
 }
+
 .row {
-  width:100%;
-  display:inline-block;
+  width: 100%;
+  display: inline-block;
 }
 .row div {
-  width:50%;
-  float:left;
+  width: 50%;
+  float: left;
 }
 .fixed {
-  height: 80px;
+  max-height: 110px;
+  min-height: 110px;
+}
+
+.stats {
+  max-height: 20px;
+  min-height: 20px;
+}
+
+.circlediv {
+  max-height: 80px;
+  min-height: 80px;
 }

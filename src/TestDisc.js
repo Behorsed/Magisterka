@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import Stats from "./Stats";
 import BarChart from "./BarChart";
 import PieChart from "./PieChart";
-
+import Circle from "./Circle";
+const speed = 2000;
 class Buttons extends Component {
     render() {
         return (
@@ -13,19 +14,11 @@ class Buttons extends Component {
         )
     }
 }
-class Circle extends Component {
 
-    render() {
-        return (
-            <img className="the-circle" alt = '' src={this.props.source} onClick={() => this.props.onCircleClick()}/>
-        )
-    }
-}
 class BlueClicked extends Component {
-
     render() {
         return (
-            this.props.blueClicked ? <p> WRONG!</p> :  <p> </p>
+            this.props.blueClicked ? <p className = "simple"> WRONG!</p> : <p> </p>
         )
     }
 }
@@ -48,7 +41,7 @@ class TestDisc extends Component {
                 //  make it reappear after a random time
             }
                 .bind(this),
-            2000 // additional time at the beginning
+            speed // additional time at the beginning
         );
     }
     handleCircle(source) {
@@ -66,7 +59,7 @@ class TestDisc extends Component {
 
                 }
                     .bind(this),
-                2000
+                speed
             )
         }
 
@@ -78,6 +71,7 @@ class TestDisc extends Component {
             resetClicked: true,
         });
     }
+
     componentDidUpdate(prevProps, prevState) {
         let time;
         if (this.state.resetClicked === true) { //additional time after reset
@@ -121,7 +115,7 @@ class TestDisc extends Component {
                     //  make it reappear after a random time
                 }
                     .bind(this),
-                2000
+                speed
             );
 
         }
@@ -136,7 +130,7 @@ class TestDisc extends Component {
                     //  make it reappear after a random time
                 }
                     .bind(this),
-                2000
+                speed
             );
 
         }
@@ -189,28 +183,23 @@ class TestDisc extends Component {
         ]
         return (
             <div>
-
                 <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
-                <div className = "row">
-                    <div className = "fixed">
-                        <Circle onCircleClick={() => this.handleCircle(this.state.source)} source = {source}/>
+                    <div className = "fixed row">
+                        <Circle onCircleClick={() => this.handleCircle(this.state.source)} source = { source }/>
+                        <BlueClicked blueClicked = { blueClicked } />
+                        <Stats className = "stats disc" stdDev = { stdDev } avg = { avg } timeListLength = { timeListLength } />
                     </div>
-                    <div>
-                        <BlueClicked blueClicked = {blueClicked}/>
-                    </div>
-                </div>
-                <Stats stdDev = { stdDev } avg = { avg } timeListLength = { timeListLength } />
                 <div className = "row">
                     <div>
                         <BarChart
-                            data={timeList}
+                            data={ timeList }
                             title="Reaction Time History"
                             color="#48aaf3"
                         />
                     </div>
                     <div>
                         <PieChart
-                            data={pieData}
+                            data={ pieData }
                             title="Number of tries in relation to average"
                             colors = {['#b4e7ff', '#78acd7', '#48aaf3']}
                         />

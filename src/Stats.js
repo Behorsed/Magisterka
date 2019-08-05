@@ -8,13 +8,11 @@ class Stats extends Component { // reusable component to
         const stdDev = this.props.stdDev;
         const timeListLength = this.props.timeListLength;
         if (timeListLength === 0) {
-            return (null);
+            return <p> </p>;
         }
 
         return (
-            <div>
                 <p> Average: {avg} ms, Standard deviation: {stdDev} ms </p>
-            </div>
         )
     }
 }
