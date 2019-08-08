@@ -55,7 +55,7 @@ class TestDisc extends Component {
             })
             setTimeout(
                 function () {
-                    this.setState({blueClicked: false, source: "/circle.jpg"});
+                    this.setState({blueClicked: false, source: "/circle.jpg", timeAppeared: Date.now()});
 
                 }
                     .bind(this),

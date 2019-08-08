@@ -4,6 +4,7 @@ import BarChart from "./BarChart";
 import PieChart from "./PieChart";
 import Circle from "./Circle";
 const speed = 2000;
+
 class Buttons extends Component {
     render() {
         return (
@@ -14,7 +15,6 @@ class Buttons extends Component {
         )
     }
 }
-
 
 class TestSimple extends Component {
     constructor(props) {
@@ -54,7 +54,7 @@ class TestSimple extends Component {
         if (this.state.resetClicked === true) {
             setTimeout(
                 function() {
-                    this.setState({resetClicked: false, source: "/circle.jpg"});
+                    this.setState({resetClicked: false, source: "/circle.jpg", timeAppeared: Date.now()});
                     //  make it reappear after a random time
 
                 }
