@@ -27,6 +27,9 @@ class TestSimple extends Component {
             stdDev: null,
             resetClicked: false
         };
+        this.handleCircle = this.handleCircle.bind(this);
+        this.handleResetClick = this.handleResetClick.bind(this);
+        this.average = this.average.bind(this);
         setTimeout(
             function() {
                 this.setState({source: "/circle.jpg", timeAppeared: Date.now()});
@@ -130,7 +133,7 @@ class TestSimple extends Component {
             <div>
                 <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
                 <div className = "fixed">
-                    <Circle onCircleClick={() => this.handleCircle(this.state.source)} source = {source}/>
+                    <Circle onCircleClick={() => this.handleCircle()} source = {source}/>
                     <Stats className = "simple" stdDev = { stdDev } avg = { avg } timeListLength = { timeListLength } />
                 </div>
 

@@ -12,6 +12,9 @@ class App extends Component {
             startPage: true,
             isSimple: true
         };
+        this.handleMenuClick = this.handleMenuClick.bind(this);
+        this.handleStartSimpleClick = this.handleStartSimpleClick.bind(this);
+        this.handleStartDiscClick = this.handleStartDiscClick.bind(this);
     }
     handleMenuClick() {
         this.setState({
@@ -44,6 +47,6 @@ class App extends Component {
         );
     }
 }
-export default App;
+export default App
 
 ReactDOM.render(<App />, document.getElementById('root'));

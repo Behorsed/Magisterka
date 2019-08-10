@@ -35,6 +35,9 @@ class TestDisc extends Component {
             resetClicked: false,
             blueClicked: false,
         };
+        this.handleCircle = this.handleCircle.bind(this);
+        this.handleResetClick = this.handleResetClick.bind(this);
+        this.average = this.average.bind(this);
         setTimeout(
             function() {
                 this.setState({source: "/circle.jpg", timeAppeared: Date.now()});

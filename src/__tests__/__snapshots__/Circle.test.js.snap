@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Circle disappears after clicked 1`] = `
+<div
+  className="circlediv"
+>
+  <img
+    alt=""
+    className="the-circle"
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`Circle disappears after clicked 2`] = `
+<div
+  className="circlediv"
+>
+  <img
+    alt=""
+    className="the-circle"
+    onClick={[Function]}
+  />
+</div>
+`;
