@@ -107,7 +107,7 @@ class TestDisc extends Component {
             );
 
         } else if (prevState.source === "/circleblue.jpg" && this.state.source ===
-            '') { // if the blue circle disappeared
+            '' && prevState.resetCliked !== true) { // if the blue circle disappeared by clicking
             // wrong!
             setTimeout(
                 function () {
@@ -115,7 +115,7 @@ class TestDisc extends Component {
                         source: Math.random() > 0.5 ? "/circle.jpg" : "/circleblue.jpg",
                         timeAppeared: Date.now()
                     });
-                    //  make it reappear after a random time
+                    //  make it reappear after random time
                 }
                     .bind(this),
                 speed
