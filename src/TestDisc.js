@@ -185,7 +185,7 @@ class TestDisc extends Component {
             }
         ]
         return (
-            <div>
+            <div id = 'test-disc'>
                 <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
                     <div className = "fixed row">
                         <Circle onCircleClick={() => this.handleCircle(this.state.source)} source = { source }/>
