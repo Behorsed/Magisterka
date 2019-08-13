@@ -1,4 +1,5 @@
 import { configure, shallow, mount, render, unmount } from 'enzyme';
+
 import Adapter from 'enzyme-adapter-react-16';
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
@@ -6,6 +7,8 @@ import { act } from "react-dom/test-utils";
 import App from "./App"
 import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom/extend-expect';
+import 'jest-canvas-mock';
+
 configure({ adapter: new Adapter() });
 
 describe('Components render without crashing', () => {
@@ -25,7 +28,10 @@ describe('Clicking buttons in Title Screen', () => {
             .simulate('click');
         //assert
         expect(component
-            .exists('#test-simple')).toEqual(true);
+            .exists('#test-simple')).toEqual(true); //test simple section appeared
+        expect(component
+            .exists('#title')).toEqual(false); //title section disappeared
+        component.unmount();
     });
     it('Clicking DRT Test Button opens Discrimination Reaction Time test', () => {
         //arrange
@@ -38,6 +44,9 @@ describe('Clicking buttons in Title Screen', () => {
             .simulate('click');
         //assert
         expect(component
-            .exists('#test-disc')).toEqual(true);
+            .exists('#test-disc')).toEqual(true); //test disc section appeared
+        expect(component
+            .exists('#title')).toEqual(false); //title section disappeared
+        component.unmount();
     });
 });

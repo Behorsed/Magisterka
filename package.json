@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/react": "^9.1.0",
+    "canvas-prebuilt": "^2.0.0-alpha.14",
     "chart.js": "^2.8.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -38,6 +39,8 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.0.0",
+    "canvas-prebuilt": "^2.0.0-alpha.14",
+    "jest-canvas-mock": "^2.1.0",
     "react-test-renderer": "^16.9.0"
   },
   "jest": {
