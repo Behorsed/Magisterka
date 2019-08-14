@@ -9,8 +9,8 @@ class Buttons extends Component {
     render() {
         return (
             <div>
-                <button className="btn" onClick={() => this.props.onMenuClick()}>Menu</button>
-                <button className="btn" onClick={() => this.props.onResetClick()}>Reset</button>
+                <button className="btn" id='simple-menu' onClick={() => this.props.onMenuClick()}>Menu</button>
+                <button className="btn" id='simple-reset' onClick={() => this.props.onResetClick()}>Reset</button>
             </div>
         )
     }
