@@ -4,6 +4,7 @@ import BarChart from "./BarChart";
 import PieChart from "./PieChart";
 import Circle from "./Circle";
 const speed = 2000;
+const freq = 0.2
 class Buttons extends Component {
     render() {
         return (
@@ -32,7 +33,6 @@ class TestDisc extends Component {
             source: '',
             avg: null,
             stdDev: null,
-            resetClicked: false,
             blueClicked: false,
         };
         this.handleCircle = this.handleCircle.bind(this);
@@ -52,6 +52,23 @@ class TestDisc extends Component {
             this.setState({
                 source: '',
             })
+            let timeClicked = Date.now();
+            const time = Math.random() * 2000;
+
+            this.setState({timeListSimple: [...this.state.timeListSimple, timeClicked - this.state.timeAppeared]});
+
+            setTimeout(
+                function () {
+                    this.setState({
+                        source: Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg",
+                        timeAppeared: Date.now()
+                    }); // randomly display blue or pink circle
+                    //  make it reappear after a random time
+                }
+                    .bind(this),
+                time
+            );
+
         } else if (source === "/circleblue.jpg") {
             this.setState({
                 source: '', blueClicked: true,
@@ -71,40 +88,23 @@ class TestDisc extends Component {
         this.setState({
             timeListSimple: [],
             source: '',
-            resetClicked: true,
+            avg: 0,
+            stdDev: 0
         });
+        setTimeout(
+            function () {
+                this.setState({source: Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg",});
+
+
+            }
+                .bind(this),
+            2000
+        )
     }
 
     componentDidUpdate(prevProps, prevState) {
-        let time;
-        if (this.state.resetClicked === true) { //additional time after reset
-            setTimeout(
-                function () {
-                    this.setState({resetClicked: false, source: Math.random() > 0.5 ? "/circle.jpg" : "/circleblue.jpg",});
-
-
-                }
-                    .bind(this),
-                2000
-            )
-        } else if (prevState.source === "/circle.jpg" && this.state.source ===
+        if (prevState.source === "/circle.jpg" && this.state.source ===
             '') { // if the circle disappeared
-            let timeClicked = Date.now();
-            time = Math.random() * 2000;
-
-            this.setState({timeListSimple: [...this.state.timeListSimple, timeClicked - prevState.timeAppeared]});
-
-            setTimeout(
-                function () {
-                    this.setState({
-                        source: Math.random() > 0.5 ? "/circle.jpg" : "/circleblue.jpg",
-                        timeAppeared: Date.now()
-                    }); // randomly display blue or pink circle
-                    //  make it reappear after a random time
-                }
-                    .bind(this),
-                time
-            );
 
         } else if (prevState.source === "/circleblue.jpg" && this.state.source ===
             '' && prevState.resetCliked !== true) { // if the blue circle disappeared by clicking
@@ -112,7 +112,7 @@ class TestDisc extends Component {
             setTimeout(
                 function () {
                     this.setState({
-                        source: Math.random() > 0.5 ? "/circle.jpg" : "/circleblue.jpg",
+                        source: Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg",
                         timeAppeared: Date.now()
                     });
                     //  make it reappear after random time
