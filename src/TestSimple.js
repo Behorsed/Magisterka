@@ -43,46 +43,37 @@ class TestSimple extends Component {
         this.setState({
             source: '',
         })
+    let time;
+    let timeClicked = Date.now();
+    time = Math.random()*speed;
 
+    this.setState({ timeListSimple: [...this.state.timeListSimple, timeClicked - this.state.timeAppeared] });
+
+    setTimeout(
+    function() {
+        this.setState({source: "/circle.jpg", timeAppeared: Date.now()});
+        //  make it reappear after a random time
     }
+.bind(this),
+    time
+);
+
+
+}
     handleResetClick() {
         this.setState({
             timeListSimple: [],
             source: '',
-            resetClicked: true,
         });
-    }
-    componentDidUpdate(prevProps, prevState) {
-        let time;
-        if (this.state.resetClicked === true) {
-            setTimeout(
-                function() {
-                    this.setState({resetClicked: false, source: "/circle.jpg", timeAppeared: Date.now()});
-                    //  make it reappear after a random time
+        setTimeout(
+            function() {
+                this.setState({source: "/circle.jpg", timeAppeared: Date.now()});
+                //  make it reappear after a random time
 
-                }
-                    .bind(this),
-                speed
-            )
-        }
-        else if ((prevState.source === "/circle.jpg" && this.state.source ===
-            '')) { // if the circle disappeared
-            let timeClicked = Date.now();
-            time = Math.random()*speed;
-
-                this.setState({ timeListSimple: [...this.state.timeListSimple, timeClicked - prevState.timeAppeared] });
-
-            setTimeout(
-                function() {
-                    this.setState({source: "/circle.jpg", timeAppeared: Date.now()});
-                    //  make it reappear after a random time
-                }
-                    .bind(this),
-                time
-            );
-
-        }
-
+            }
+                .bind(this),
+            speed
+        )
     }
 
     average(data){

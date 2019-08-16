@@ -28,3 +28,4 @@ configure({ adapter: new Adapter() });
         expect(component.state('timeListSimple')).toEqual([]);
         component.unmount();
     });
+

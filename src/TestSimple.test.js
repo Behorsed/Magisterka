@@ -7,6 +7,7 @@ import { act } from "react-dom/test-utils";
 import TestSimple from "./TestSimple"
 import '@testing-library/jest-dom/extend-expect';
 import 'jest-canvas-mock';
+import TestDisc from "./TestDisc";
 
 configure({ adapter: new Adapter() });
 
@@ -27,3 +28,16 @@ configure({ adapter: new Adapter() });
         expect(component.state('timeListSimple')).toEqual([]);
         component.unmount();
     });
+
+it('Clicking in pink circle makes it disappear and adds one record to timeListSimple ', () => {
+    const mockFunction = jest.fn();
+    const component = mount(
+        <TestSimple onMenuClick={() => {mockFunction()}}/>
+    )
+    expect(component.state('timeListSimple')).toHaveLength(0);
+    component
+        .find('.the-circle')
+        .simulate('click');
+    expect(component.state('source')).toEqual('');
+
+});
