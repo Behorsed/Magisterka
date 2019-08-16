@@ -39,5 +39,6 @@ it('Clicking in pink circle makes it disappear and adds one record to timeListSi
         .find('.the-circle')
         .simulate('click');
     expect(component.state('source')).toEqual('');
-
+    expect(component.state('timeListSimple')).toHaveLength(1);
+    component.unmount();
 });

@@ -25,7 +25,30 @@ configure({ adapter: new Adapter() });
             .find('button#disc-reset')
             .simulate('click');
         expect(component.state('source')).toEqual('');
-        expect(component.state('timeListSimple')).toEqual([]);
+        expect(component.state('timeListDisc')).toEqual([]);
         component.unmount();
     });
 
+    it('Clicking on a pink circle adds one record to timeList, and clicking on a blue one doesn\'t', () => {
+        const mockFunction = jest.fn();
+        const component = mount(
+            <TestDisc onMenuClick={() => {
+                mockFunction()
+            }}/>
+        );
+        component.state().source = "/circleblue.jpg"
+        component
+            .find('.the-circle')
+            .simulate('click');
+        expect(component.state('source')).toEqual('');
+        expect(component.state('timeListDisc')).toHaveLength(0);
+
+        component.state().source = "/circle.jpg";
+            component
+                .find('.the-circle')
+                .simulate('click');
+                expect(component.state('source')).toEqual('');
+                expect(component.state('timeListDisc')).toHaveLength(1);
+
+        component.unmount();
+    });

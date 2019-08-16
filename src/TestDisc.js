@@ -4,7 +4,7 @@ import BarChart from "./BarChart";
 import PieChart from "./PieChart";
 import Circle from "./Circle";
 const speed = 2000;
-const freq = 0.2
+const freq = 0.5;
 class Buttons extends Component {
     render() {
         return (
@@ -28,7 +28,7 @@ class TestDisc extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            timeListSimple: [],
+            timeListDisc: [],
             timeAppeared: null,
             source: '',
             avg: null,
@@ -40,7 +40,7 @@ class TestDisc extends Component {
         this.average = this.average.bind(this);
         setTimeout(
             function() {
-                this.setState({source: "/circle.jpg", timeAppeared: Date.now()});
+                this.setState({source: Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg", timeAppeared: Date.now()});
                 //  make it reappear after a random time
             }
                 .bind(this),
@@ -55,7 +55,7 @@ class TestDisc extends Component {
             let timeClicked = Date.now();
             const time = Math.random() * 2000;
 
-            this.setState({timeListSimple: [...this.state.timeListSimple, timeClicked - this.state.timeAppeared]});
+            this.setState({timeListDisc: [...this.state.timeListDisc, timeClicked - this.state.timeAppeared]});
 
             setTimeout(
                 function () {
@@ -86,7 +86,7 @@ class TestDisc extends Component {
     }
     handleResetClick() {
         this.setState({
-            timeListSimple: [],
+            timeListDisc: [],
             source: '',
             avg: 0,
             stdDev: 0
@@ -149,7 +149,7 @@ class TestDisc extends Component {
     }
     render() {
         const source = this.state.source;
-        const timeList = this.state.timeListSimple;
+        const timeList = this.state.timeListDisc
         const blueClicked = this.state.blueClicked;
         const avg = Math.round(this.average(timeList));
         let stdDevElements = timeList.map(function(value){
