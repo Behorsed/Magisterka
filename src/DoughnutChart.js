@@ -1,7 +1,7 @@
 import { Chart } from 'chart.js'
 import React, {Component} from 'react';
 
-class PieChart extends Component {
+class DoughnutChart extends Component {
     constructor(props) {
         super(props);
         this.chartRef = React.createRef();
@@ -31,4 +31,4 @@ class PieChart extends Component {
     }
 }
 
-export default PieChart
+export default DoughnutChart

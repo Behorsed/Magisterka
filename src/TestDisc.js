@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Stats from "./Stats";
 import BarChart from "./BarChart";
-import PieChart from "./PieChart";
+import DoughnutChart from "./DoughnutChart";
 import Circle from "./Circle";
 const speed = 2000;
 const freq = 0.5;
@@ -201,7 +201,7 @@ class TestDisc extends Component {
                         />
                     </div>
                     <div>
-                        <PieChart
+                        <DoughnutChart
                             data={ pieData }
                             title="Number of tries in relation to average"
                             colors = {['#b4e7ff', '#78acd7', '#48aaf3']}
