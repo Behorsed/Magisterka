@@ -8,13 +8,13 @@ class DoughnutChart extends Component {
     }
 
     componentDidUpdate() {
-        this.myChart.data.labels = this.props.data.map(d => d.label);
-        this.myChart.data.datasets[0].data = this.props.data.map(d => d.value);
-        this.myChart.update();
+        this.doughnutChart.data.labels = this.props.data.map(d => d.label);
+        this.doughnutChart.data.datasets[0].data = this.props.data.map(d => d.value);
+        this.doughnutChart.update();
     }
 
     componentDidMount() {
-        this.myChart = new Chart(this.chartRef.current, {
+        this.doughnutChart = new Chart(this.chartRef.current, {
             type: 'doughnut',
             data: {
                 labels: this.props.data.map(d => d.label),

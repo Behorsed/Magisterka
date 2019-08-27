@@ -12,15 +12,15 @@ class BarChart extends Component {
 
     componentDidUpdate() {
         const labels = this.props.data.map((e) => e + ' ms')
-       // this.myChart.data.labels = Array.from(Array(this.props.data.length), (e,i)=>i+1); ordered list
-        this.myChart.data.labels = labels;
-        this.myChart.data.datasets[0].data = this.props.data;
-        this.myChart.update();
+       // this.doughnutChart.data.labels = Array.from(Array(this.props.data.length), (e,i)=>i+1); ordered list
+        this.barChart.data.labels = labels;
+        this.barChart.data.datasets[0].data = this.props.data;
+        this.barChart.update();
     }
 
     componentDidMount() {
         const labels = this.props.data.map((e) => e + ' ms')
-        this.myChart = new Chart(this.canvasRef.current, {
+        this.barChart = new Chart(this.canvasRef.current, {
             type: 'bar',
             options: {
                 maintainAspectRatio: false,
