@@ -88,8 +88,8 @@ class TestDisc extends Component {
         this.setState({
             timeListDisc: [],
             source: '',
-            avg: 0,
-            stdDev: 0
+            avg: null,
+            stdDev: null
         });
         setTimeout(
             function () {
@@ -190,7 +190,7 @@ class TestDisc extends Component {
                     <div className = "fixed row">
                         <Circle onCircleClick={() => this.handleCircle(this.state.source)} source = { source }/>
                         <BlueClicked blueClicked = { blueClicked } />
-                        <Stats className = "stats disc" stdDev = { stdDev } avg = { avg } timeListLength = { timeListLength } />
+                        <Stats className = "stats disc" stdDev = { stdDev } avg = { avg } />
                     </div>
                 <div className = "row">
                     <div>

@@ -125,7 +125,7 @@ class TestSimple extends Component {
                 <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
                 <div className = "fixed">
                     <Circle onCircleClick={() => this.handleCircle()} source = {source}/>
-                    <Stats className = "simple" stdDev = { stdDev } avg = { avg } timeListLength = { timeListLength } />
+                    <Stats className = "simple" stdDev = { stdDev } avg = { avg } />
                 </div>
 
                 <div className = "row">
