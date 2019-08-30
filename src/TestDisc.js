@@ -5,7 +5,7 @@ import DoughnutChart from "./DoughnutChart";
 import Buttons from "./Buttons"
 import Circle from "./Circle";
 const speed = 2000;
-const freq = 0.3;
+const freq = 0.5;
 
 class BlueClicked extends Component {
     render() {
@@ -177,15 +177,15 @@ class TestDisc extends Component {
         ]
         return (
             <div id = 'test-disc'>
-                <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
-                    <div className = "fixed row">
-                        <Circle onCircleClick={() => this.handleCircle(this.state.source)} source = { source }/>
-                        <BlueClicked blueClicked = { blueClicked } />
-                        <Stats className = "stats disc" stdDev = { stdDev } avg = { avg } />
+                <Buttons menu='disc-menu' reset='disc-reset' onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
+                    <div className = "fixed">
+                        <div> <Circle onCircleClick={() => this.handleCircle(this.state.source)} source = { source }/></div>
+                        <div className = "row"> <div> <BlueClicked blueClicked = { blueClicked } /> </div>
+                            <div>  <Stats className = "stats disc" stdDev = { stdDev } avg = { avg } /> </div></div>
                     </div>
                 <div className = "row">
                     <div>
-                        <BarChart
+                        <BarChart className='chart'
                             data={ timeList }
                             title="Reaction Time History"
                             color="#48aaf3"

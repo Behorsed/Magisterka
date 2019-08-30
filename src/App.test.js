@@ -60,7 +60,7 @@ describe('Clicking Menu buttons in Reaction Tests', () => {
             .find('button.btndisc')
             .simulate('click');
         component
-            .find('button#disc-menu')
+            .find('button.menu')
             .simulate('click');
         expect(component
             .exists('#test-disc')).toEqual(false); //test disc section disappeared
@@ -77,7 +77,7 @@ describe('Clicking Menu buttons in Reaction Tests', () => {
             .find('button.btnsimple')
             .simulate('click');
         component
-            .find('button#simple-menu')
+            .find('button.menu')
             .simulate('click');
         expect(component
             .exists('#test-simple')).toEqual(false); //test disc section disappeared

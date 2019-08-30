@@ -22,7 +22,7 @@ configure({ adapter: new Adapter() });
             <TestSimple onMenuClick={() => {mockFunction()}}/>
         );
         component
-            .find('button#simple-reset')
+            .find('button.reset')
             .simulate('click');
         expect(component.state('source')).toEqual('');
         expect(component.state('timeListSimple')).toEqual([]);

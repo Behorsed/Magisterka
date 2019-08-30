@@ -113,10 +113,10 @@ class TestSimple extends Component {
         ]
         return (
             <div id = "test-simple">
-                <Buttons onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
+                <Buttons menu='simple-menu' reset='simple-reset' onMenuClick={() => this.props.onMenuClick()} onResetClick={() => this.handleResetClick()}/>
                 <div className = "fixed">
                     <Circle onCircleClick={() => this.handleCircle()} source = {source}/>
-                    <Stats className = "simple" stdDev = { stdDev } avg = { avg } />
+                    <Stats className = "stats simple" stdDev = { stdDev } avg = { avg } />
                 </div>
 
                 <div className = "row">

@@ -11,7 +11,7 @@ class Stats extends Component { // reusable component to
         }
 
         return (
-                <p> Average: {avg} ms, Standard deviation: {stdDev} ms </p>
+               <p> Average: {avg} ms, Standard deviation: {stdDev} ms </p>
         )
     }
 }

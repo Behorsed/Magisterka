@@ -22,7 +22,7 @@ configure({ adapter: new Adapter() });
             <TestDisc onMenuClick={() => {mockFunction()}}/>
         );
         component
-            .find('button#disc-reset')
+            .find('button.reset')
             .simulate('click');
         expect(component.state('source')).toEqual('');
         expect(component.state('timeListDisc')).toEqual([]);

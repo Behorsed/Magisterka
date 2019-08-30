@@ -16,40 +16,26 @@ body {
 .btnsimple {
   color: #ef6363;
   border: 1px solid #ef6363;
-  background: transparent;
-  font-size: 1em;
-  padding: 10px 5px;
-  margin-top: 25px;
-  font-weight: 100;
-  width: 150px;
-  letter-spacing: 3px;
-  cursor: pointer;
+
 }
 #disc {
   color: #48aaf3
 }
 .btndisc {
   color: #48aaf3;
-  background: transparent;
-  font-size: 1em;
-  padding: 10px 5px;
-  margin-top: 25px;
-  font-weight: 100;
-  width: 150px;
-  letter-spacing: 3px;
-  cursor: pointer;
   border: 1px solid #48aaf3
 }
 .btn {
   background: transparent;
-  font-size: 1em;
-  padding: 10px 5px;
-  margin-top: 25px;
+  font-size: 1.5vmax;
+  padding: 0.75vmin 0.75vmin;
+  margin-top: 1vmin;
+  margin-bottom: 0.5vmin;
   font-weight: 100;
-  width: 150px;
-  letter-spacing: 3px;
+  width: 12vmax;
+  letter-spacing: 0.2vmax;
   cursor: pointer;
-  border: 1px solid
+  border: 0.05vw solid
 }
 
 
@@ -58,48 +44,61 @@ body {
   color: #fff;
 }
 
-#reset {
-  font-size: 2em;
+.reset {
   position: absolute;
-  bottom: 150px;
-  right: 3em;
-  width: 200px;
-  padding: 5px 8px;
-  border: 1px solid #d25d5d;
-  text-decoration: none;
-  color: #d25d5d;
+  bottom: 2vmin;
+  right: 2vmin;
 }
-#reset:hover {
+#simple-reset {
+  border: 0.05vw solid #d25d5d;
+  color: #d25d5d;
+
+}
+#simple-reset:hover {
   background: #d23425;
   color: #fff;
 }
+#disc-reset {
+  border: 0.05vw solid #48aaf3;
+  color: #48aaf3;
 
-#menu {
-  font-size: 2em;
+}
+#disc-reset:hover {
+  background: #48aaf3;
+  color: #fff;
+}
+.menu {
   position: absolute;
-  bottom: 50px;
-  right: 3em;
-  width: 200px;
-  padding: 5px 8px;
-  border: 1px solid #d25d5d;
-  text-decoration: none;
+  bottom: 8vmin;
+  right: 2vmin;
+}
+#simple-menu {
+  border: 0.05vw solid #d25d5d;
   color: #d25d5d;
 }
-#menu:hover {
+#simple-menu:hover {
   background: #d23425;
   color: #fff;
 }
-
+#disc-menu {
+  border: 0.05vw solid #48aaf3;
+  color: #48aaf3;
+}
+#disc-menu:hover {
+  background: #48aaf3;
+  color: #fff;
+}
 #reaction-time {
   width: 100%;
   color: #d25d5d;
 }
 
 .the-circle {
+  margin-top: 5vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50px;
+  width: 7vmin;
 }
 
 .row {
@@ -111,16 +110,17 @@ body {
   float: left;
 }
 .fixed {
-  max-height: 110px;
-  min-height: 110px;
+  max-height: 50vh;
+  min-height: 25vh;
 }
 
 .stats {
-  max-height: 20px;
-  min-height: 20px;
+  max-height: 20vh;
+  min-height: 10vh;
+  text-align: center
 }
 
 .circlediv {
-  max-height: 80px;
-  min-height: 80px;
+  max-height: 20vh;
+  min-height: 10vh;
 }
