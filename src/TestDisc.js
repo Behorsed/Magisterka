@@ -31,7 +31,7 @@ class TestDisc extends Component {
             timeListDisc: [],
             timeAppeared: null,
             source: '',
-            avg: null,
+            avg: 0,
             stdDev: null,
             blueClicked: false,
         };

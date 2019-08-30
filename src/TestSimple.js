@@ -23,7 +23,7 @@ class TestSimple extends Component {
             timeListSimple: [],
             timeAppeared: null,
             source: '',
-            avg: null,
+            avg: 0,
             stdDev: null,
             resetClicked: false
         };
