@@ -2,19 +2,10 @@ import React, {Component} from 'react';
 import Stats from "./Stats";
 import BarChart from "./BarChart";
 import DoughnutChart from "./DoughnutChart";
+import Buttons from "./Buttons"
 import Circle from "./Circle";
 const speed = 2000;
-const freq = 0.5;
-class Buttons extends Component {
-    render() {
-        return (
-            <div>
-                <button className="btn" id='disc-menu' onClick={() => this.props.onMenuClick()}>Menu</button>
-                <button className="btn" id='disc-reset' onClick={() => this.props.onResetClick()}>Reset</button>
-            </div>
-        )
-    }
-}
+const freq = 0.3;
 
 class BlueClicked extends Component {
     render() {

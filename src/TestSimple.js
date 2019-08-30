@@ -2,19 +2,10 @@ import React, {Component} from 'react';
 import Stats from "./Stats";
 import BarChart from "./BarChart";
 import DoughnutChart from "./DoughnutChart";
+import Buttons from "./Buttons"
 import Circle from "./Circle";
 const speed = 2000;
 
-class Buttons extends Component {
-    render() {
-        return (
-            <div>
-                <button className="btn" id='simple-menu' onClick={() => this.props.onMenuClick()}>Menu</button>
-                <button className="btn" id='simple-reset' onClick={() => this.props.onResetClick()}>Reset</button>
-            </div>
-        )
-    }
-}
 
 class TestSimple extends Component {
     constructor(props) {
