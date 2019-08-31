@@ -29,7 +29,7 @@ configure({ adapter: new Adapter() });
         component.unmount();
     });
 
-it('Clicking in pink circle makes it disappear and adds one record to timeListSimple ', () => {
+it('Clicking in pink circle makes it disappear and adds one record to timeList ', () => {
     const mockFunction = jest.fn();
     const component = mount(
         <TestSimple onMenuClick={() => {mockFunction()}}/>

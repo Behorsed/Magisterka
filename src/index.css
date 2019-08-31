@@ -6,8 +6,13 @@ body {
 #title {
   text-align: center;
   font-weight: bold;
+  font-size: 2vmax;
 }
-
+.wrong {
+  color: #ef6363;
+  font-weight: bold;
+  font-size: 2vmax;
+}
 .simple {
   color: #ef6363;
   font-weight: bold;

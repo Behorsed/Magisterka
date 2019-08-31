@@ -10,7 +10,7 @@ const freq = 0.5;
 class BlueClicked extends Component {
     render() {
         return (
-            this.props.blueClicked ? <p className = "simple"> WRONG!</p> : <p> </p>
+            this.props.blueClicked ? <p className = "wrong"> WRONG!</p> : <p> </p>
         )
     }
 }
@@ -44,7 +44,7 @@ class TestDisc extends Component {
                 source: '',
             })
             let timeClicked = Date.now();
-            const time = Math.random() * 2000;
+            const time = Math.random() * speed;
 
             this.setState({timeListDisc: [...this.state.timeListDisc, timeClicked - this.state.timeAppeared]});
 
@@ -66,7 +66,7 @@ class TestDisc extends Component {
             })
             setTimeout(
                 function () {
-                    this.setState({blueClicked: false, source: "/circle.jpg", timeAppeared: Date.now()});
+                    this.setState({blueClicked: false});
 
                 }
                     .bind(this),
@@ -94,12 +94,8 @@ class TestDisc extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.source === "/circle.jpg" && this.state.source ===
-            '') { // if the circle disappeared
-
-        } else if (prevState.source === "/circleblue.jpg" && this.state.source ===
-            '' && prevState.resetCliked !== true) { // if the blue circle disappeared by clicking
-            // wrong!
+        if (prevState.source === "/circleblue.jpg" && this.state.source ===
+            '') { // if the blue circle disappeared
             setTimeout(
                 function () {
                     this.setState({
@@ -115,7 +111,6 @@ class TestDisc extends Component {
         }
         else if (this.state.source ===
             "/circleblue.jpg") { // if the blue circle stays
-
             setTimeout(
                 function () {
                     this.setState({

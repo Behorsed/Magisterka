@@ -11,12 +11,11 @@ class TestSimple extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            timeListSimple: [],
+            timeList: [],
             timeAppeared: null,
             source: '',
             avg: 0,
             stdDev: null,
-            resetClicked: false
         };
         this.handleCircle = this.handleCircle.bind(this);
         this.handleResetClick = this.handleResetClick.bind(this);
@@ -38,7 +37,7 @@ class TestSimple extends Component {
     let timeClicked = Date.now();
     time = Math.random()*speed;
 
-    this.setState({ timeListSimple: [...this.state.timeListSimple, timeClicked - this.state.timeAppeared] });
+    this.setState({ timeList: [...this.state.timeList, timeClicked - this.state.timeAppeared] });
 
     setTimeout(
     function() {
@@ -53,7 +52,7 @@ class TestSimple extends Component {
 }
     handleResetClick() {
         this.setState({
-            timeListSimple: [],
+            timeList: [],
             source: '',
         });
         setTimeout(
@@ -63,7 +62,7 @@ class TestSimple extends Component {
 
             }
                 .bind(this),
-            speed
+            Math.random()*speed
         )
     }
 
@@ -77,7 +76,7 @@ class TestSimple extends Component {
     }
     render() {
         const source = this.state.source;
-        const timeList = this.state.timeListSimple;
+        const timeList = this.state.timeList;
         const avg = Math.round(this.average(timeList));
         let stdDevElements = timeList.map(function(value){
             let diff = value - avg; //(x-x_mean)
@@ -97,7 +96,7 @@ class TestSimple extends Component {
             else if (timeList[i] > avg + stdDev)
             {high++;}
         }
-        const pieData = [
+        const doughnutData = [
             {
                 "label": "< Average - Standard Deviation",
                 "value": low
@@ -129,7 +128,7 @@ class TestSimple extends Component {
                     </div>
                     <div>
                         <DoughnutChart
-                            data={pieData}
+                            data={doughnutData}
                             title="Number of tries in relation to average"
                             colors = {['#eeac99', '#e06377', '#c83349']}
                         />
