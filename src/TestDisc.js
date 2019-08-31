@@ -58,23 +58,15 @@ class TestDisc extends Component {
 
     }
     handleResetClick() {
-        const time = Math.random() * speed;
         if (this.state.resetClicked === false) {
-        this.setState({
-            timeListDisc: [],
-            source: '',
-            avg: 0,
-            stdDev: null,
-            blueClicked: false,
-            resetClicked:true,
-        });
-        setTimeout(
-            function () {
-                this.setState({source: Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg", resetClicked: false, timeAppeared: Date.now()});
-            }
-                .bind(this),
-            time
-        )
+            this.setState({
+                timeListDisc: [],
+                source: '',
+                avg: 0,
+                stdDev: null,
+                blueClicked: false,
+                resetClicked: true,
+            });
         }
     }
 
@@ -103,7 +95,7 @@ class TestDisc extends Component {
                     if (this.state.source ===
                         "") {
                         this.setState({
-                            source:Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg", timeAppeared: Date.now()
+                            source:Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg", timeAppeared: Date.now(), resetClicked:false, blueClicked: false
                         });
                     }
 
