@@ -25,6 +25,7 @@ class TestDisc extends Component {
             avg: 0,
             stdDev: null,
             blueClicked: false,
+            resetClicked:false
         };
         this.handleCircle = this.handleCircle.bind(this);
         this.handleResetClick = this.handleResetClick.bind(this);
@@ -39,6 +40,7 @@ class TestDisc extends Component {
         );
     }
     handleCircle(source) {
+        const time = Math.random() * speed;
         if (source === "/circle.jpg") {
             this.setState({
                 source: '',
@@ -48,80 +50,67 @@ class TestDisc extends Component {
 
             this.setState({timeListDisc: [...this.state.timeListDisc, timeClicked - this.state.timeAppeared]});
 
-            setTimeout(
-                function () {
-                    this.setState({
-                        source: Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg",
-                        timeAppeared: Date.now()
-                    }); // randomly display blue or pink circle
-                    //  make it reappear after a random time
-                }
-                    .bind(this),
-                time
-            );
-
-        } else if (source === "/circleblue.jpg") {
+        } else if (source === "/circleblue.jpg") { //if blue circle clicked
             this.setState({
                 source: '', blueClicked: true,
             })
-            setTimeout(
-                function () {
-                    this.setState({blueClicked: false});
-
-                }
-                    .bind(this),
-                speed
-            )
         }
 
     }
     handleResetClick() {
+        const time = Math.random() * speed;
+        if (this.state.resetClicked === false) {
         this.setState({
             timeListDisc: [],
             source: '',
-            avg: null,
-            stdDev: null
+            avg: 0,
+            stdDev: null,
+            blueClicked: false,
+            resetClicked:true,
         });
         setTimeout(
             function () {
-                this.setState({source: Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg",});
-
-
+                this.setState({source: Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg", resetClicked: false, timeAppeared: Date.now()});
             }
                 .bind(this),
-            2000
+            time
         )
+        }
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.source === "/circleblue.jpg" && this.state.source ===
-            '') { // if the blue circle disappeared
+        const time = Math.random() * speed;
+        if (this.state.source ===
+            "/circleblue.jpg") {
             setTimeout(
                 function () {
+                    if (this.state.source ===
+                        "/circleblue.jpg") {
                     this.setState({
-                        source: Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg",
-                        timeAppeared: Date.now()
+                        source: ''
                     });
-                    //  make it reappear after random time
-                }
-                    .bind(this),
-                speed
-            );
+                    }
 
+            }
+                    .bind(this),
+                time
+            )
         }
-        else if (this.state.source ===
-            "/circleblue.jpg") { // if the blue circle stays
+        if (this.state.source ===
+            "") {
             setTimeout(
                 function () {
-                    this.setState({
-                        source: '',
-                    });
-                    //  make it reappear after a random time
+                    if (this.state.source ===
+                        "") {
+                        this.setState({
+                            source:Math.random() > freq ? "/circle.jpg" : "/circleblue.jpg", timeAppeared: Date.now()
+                        });
+                    }
+
                 }
                     .bind(this),
-                speed
-            );
-
+                time
+            )
         }
 
     }
